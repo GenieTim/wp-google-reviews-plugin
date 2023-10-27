@@ -1,0 +1,5 @@
+{
+    "require": {
+        "skagarwal/google-places-api": "^2.1"
+    }
+}
