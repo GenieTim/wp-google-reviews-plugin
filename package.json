@@ -1,13 +1,15 @@
 {
     "name": "svelte-wordpress-plugin",
     "version": "0.0.1",
+    "type": "module",
     "devDependencies": {
+        "@rollup/plugin-commonjs": "^25.0.7",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-terser": "^0.4.4",
         "npm-run-all": "^4.1.5",
         "rollup": "^4.1.4",
-        "rollup-plugin-commonjs": "^10.1.0",
-        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-css-only": "^4.3.0",
         "rollup-plugin-svelte": "^7.1.6",
-        "rollup-plugin-terser": "^7.0.2",
         "svelte": "4.2.2"
     },
     "scripts": {
