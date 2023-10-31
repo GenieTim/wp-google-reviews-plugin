@@ -15,5 +15,6 @@
   .stars {
     font-size: 1.5em;
     word-break: keep-all;
+    color: #fb8e28;
   }
 </style>

@@ -40,9 +40,12 @@
 
 <style>
   .review-container {
-    padding: 0.5em;
-    margin-left: 0.5em;
-    border: 1px solid var(--review-container-border-color, rgba(0, 0, 0, 0.25));
+    padding: 0.75em;
+    margin: .5em;
+    /* margin-left: 1em; */
+    /* border: 1px solid var(--review-container-border-color, rgba(0, 0, 0, 0.25)); */
+    border-radius: 4px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: min-content min-content 1fr;
@@ -63,6 +66,7 @@
     display: grid;
     grid-template-columns: min-content 1fr;
     grid-template-rows: 1fr 1fr;
+    gap: 0px 1em;
     grid-template-areas:
       "authoricon authorname"
       "authoricon authordate";
