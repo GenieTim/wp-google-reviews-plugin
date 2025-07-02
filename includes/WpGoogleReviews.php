@@ -109,9 +109,20 @@ class WpGoogleReviews
     public function load_google_reviews(string $placeId)
     {
         $cache_key = 'wp-google-reviews-' . $placeId . get_locale();
+        $transient_key = 'wp_google_reviews_' . md5($placeId . get_locale());
+
+        // Try wp_cache first
         $cached_data = wp_cache_get($cache_key);
         if ($cached_data) {
             return $cached_data;
+        }
+
+        // Fallback to transients
+        $transient_data = get_transient($transient_key);
+        if ($transient_data) {
+            // Store back in wp_cache for faster access during this request
+            wp_cache_set($cache_key, $transient_data, 2 * 24 * HOUR_IN_SECONDS);
+            return $transient_data;
         }
 
         $this->load_dependencies();
@@ -122,7 +133,10 @@ class WpGoogleReviews
             'fields' => 'name,icon,photo,url,rating,reviews'
         ]);
 
+        // Store in both caches
         wp_cache_set($cache_key, $placeDetails, 2 * 24 * HOUR_IN_SECONDS);
+        set_transient($transient_key, $placeDetails, 2 * 24 * HOUR_IN_SECONDS);
+
         return $placeDetails;
     }
 }
