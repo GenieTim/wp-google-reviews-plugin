@@ -5,6 +5,8 @@ use SKAgarwal\GoogleApi\PlacesApi;
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
+assert(defined('WP_GOOGLE_REVIEWS_VERSION'), 'WP_GOOGLE_REVIEWS_VERSION must be defined.');
+
 class WpGoogleReviews
 {
 
@@ -33,7 +35,7 @@ class WpGoogleReviews
         add_filter($this->wpsf->get_option_group() . '_settings_validate', array(&$this, 'validate_settings'));
 
         // add us
-        // add_action('wp_enqueue_scripts', array($this, 'load_dependencies'));
+        add_action('wp_enqueue_scripts', array($this, 'load_dependencies'));
         add_shortcode('google-review', array($this, 'output_google_reviews'));
     }
 
@@ -69,8 +71,8 @@ class WpGoogleReviews
      */
     public function load_dependencies()
     {
-        wp_enqueue_script('wp-google-reviews', plugins_url('assets/build/bundle.js', dirname(__FILE__)), array(), time(), true);
-        wp_enqueue_style('wp-google-reviews', plugins_url('assets/build/bundle.css', dirname(__FILE__)), array(), time());
+        wp_enqueue_script('wp-google-reviews', plugins_url('assets/build/bundle.js', dirname(__FILE__)), array(), WP_GOOGLE_REVIEWS_VERSION, true);
+        wp_enqueue_style('wp-google-reviews', plugins_url('assets/build/bundle.css', dirname(__FILE__)), array(), WP_GOOGLE_REVIEWS_VERSION);
 
         // Optional
         wp_localize_script('wp-google-reviews', 'wordpress_object', array(

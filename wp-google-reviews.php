@@ -13,6 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Access denied.' );
 }
 
+if (!defined('WP_GOOGLE_REVIEWS_VERSION')) {
+    define('WP_GOOGLE_REVIEWS_VERSION', '0.0.1');
+}
+
 require_once( __DIR__ . '/includes/WpGoogleReviews.php' );
 
 if ( class_exists( 'WpGoogleReviews' ) ) {
