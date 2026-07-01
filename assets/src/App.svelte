@@ -77,6 +77,12 @@
     display: flex;
   }
 
+  @media (max-width: 40rem) {
+    .reviews-container {
+      flex-direction: column;
+    }
+  }
+
   .business-profile {
     min-width: 15em;
     text-align: center;
